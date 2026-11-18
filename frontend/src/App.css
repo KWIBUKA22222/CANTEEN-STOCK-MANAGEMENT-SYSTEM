@@ -1,0 +1,781 @@
+
+/* =====================================
+   GLOBAL SETTINGS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fc;
+    color: #263449;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* =====================================
+   DASHBOARD LAYOUT
+===================================== */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar {
+    width: 255px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #073b74, #05264b);
+    color: white;
+    padding: 28px 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar h2 {
+    font-size: 21px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #dce9f8;
+    padding: 14px 15px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav a:hover {
+    background: #f4b400;
+    color: #073b74;
+    transform: translateX(5px);
+}
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+.main-content {
+    flex: 1;
+    margin-left: 255px;
+    padding: 30px;
+    min-width: 0;
+}
+
+/* =====================================
+   TOP BAR
+===================================== */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 23px 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(30, 50, 80, 0.05);
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    color: #073b74;
+    font-size: 27px;
+    margin-bottom: 7px;
+}
+
+.topbar p {
+    color: #7b8798;
+    font-size: 14px;
+}
+
+.topbar button {
+    background: #073b74;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.topbar button:hover {
+    background: #f4b400;
+    color: #073b74;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   STATISTICS CARDS
+===================================== */
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 25px 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(30, 50, 80, 0.05);
+    border-left: 5px solid #f4b400;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30, 50, 80, 0.12);
+}
+
+.stat-icon {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf4fc;
+    border-radius: 12px;
+    font-size: 28px;
+}
+
+.stat-card h3 {
+    color: #7b8798;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.stat-card h2 {
+    color: #073b74;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+/* =====================================
+   DASHBOARD SECTIONS
+===================================== */
+
+.dashboard-section {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 15px rgba(30, 50, 80, 0.05);
+    overflow-x: auto;
+}
+
+.dashboard-section h2 {
+    color: #073b74;
+    font-size: 19px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+/* =====================================
+   TABLES
+===================================== */
+
+table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background: #edf4fc;
+}
+
+th {
+    color: #073b74;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+td {
+    padding: 16px 15px;
+    color: #526176;
+    font-size: 14px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #f7faff;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =====================================
+   ERROR MESSAGE
+===================================== */
+
+.error-message {
+    background: #fff0f0;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+    padding: 15px;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* =====================================
+   LOADING SCREEN
+===================================== */
+
+.loading {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #073b74;
+    font-size: 22px;
+    font-weight: 700;
+    background: #f4f7fc;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 1100px) {
+    .stats-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 190px;
+        padding: 22px 12px;
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
+    }
+
+    .main-content {
+        margin-left: 190px;
+        padding: 18px;
+    }
+
+    .topbar {
+        padding: 18px;
+    }
+
+    .topbar h1 {
+        font-size: 22px;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dashboard-section {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .sidebar h2 {
+        padding-bottom: 12px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 6px;
+    }
+
+    .sidebar nav a {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 14px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .topbar button {
+        width: 100%;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================
+   PRODUCTS MANAGEMENT
+===================================== */
+
+.products-page {
+    width: 100%;
+}
+
+.product-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #073b74;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    background: #fff;
+    color: #263449;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #073b74;
+    box-shadow: 0 0 0 3px rgba(7, 59, 116, 0.1);
+}
+
+.form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.form-buttons button,
+.products-page .topbar button {
+    background: #073b74;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.form-buttons button:hover,
+.products-page .topbar button:hover {
+    background: #f4b400;
+    color: #073b74;
+}
+
+.form-buttons .cancel-button {
+    background: #78869a;
+}
+
+.form-buttons .cancel-button:hover {
+    background: #5b6676;
+    color: white;
+}
+
+/* PRODUCT ACTION BUTTONS */
+
+.action-buttons {
+    display: flex;
+    gap: 7px;
+}
+
+.action-buttons button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.edit-button {
+    background: #1674c5;
+}
+
+.edit-button:hover {
+    background: #0b5799;
+}
+
+.delete-button {
+    background: #dc3545;
+}
+
+.delete-button:hover {
+    background: #a91f2d;
+}
+
+/* SUCCESS MESSAGE */
+
+.success-message {
+    background: #e8f7ed;
+    color: #18743a;
+    border-left: 4px solid #28a745;
+    padding: 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE PRODUCT FORM */
+
+@media (max-width: 650px) {
+    .product-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-buttons button {
+        width: 100%;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* =====================================
+   CATEGORIES MANAGEMENT
+===================================== */
+
+.categories-page {
+    width: 100%;
+}
+
+.category-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.category-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-form label {
+    color: #073b74;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.category-form input,
+.category-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    resize: vertical;
+}
+
+.category-form input:focus,
+.category-form textarea:focus {
+    border-color: #073b74;
+    box-shadow: 0 0 0 3px rgba(7, 59, 116, 0.1);
+}
+
+.category-form .form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+}
+
+.category-form .form-buttons button {
+    background: #073b74;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.category-form .form-buttons button:hover {
+    background: #f4b400;
+    color: #073b74;
+}
+
+.category-form .form-buttons .cancel-button {
+    background: #78869a;
+    color: white;
+}
+
+.category-form .form-buttons .cancel-button:hover {
+    background: #5b6676;
+}
+
+@media (max-width: 650px) {
+    .category-form {
+        grid-template-columns: 1fr;
+    }
+
+    .category-form .form-buttons {
+        flex-direction: column;
+    }
+
+    .category-form .form-buttons button {
+        width: 100%;
+    }
+}
+
+/* AUTHENTICATION */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f4f8;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.auth-card h1 {
+    color: #073b74;
+    text-align: center;
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.auth-card > button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    margin-top: 22px;
+    background: #073b74;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.auth-card p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: #073b74;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* =====================================
+   STOCK IN - ADD STOCK BUTTON
+===================================== */
+
+.stock-form .add-stock-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: fit-content;
+    min-width: 170px;
+    padding: 14px 25px;
+
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.20);
+    transition: all 0.3s ease;
+}
+
+.stock-form .add-stock-btn:hover {
+    background: linear-gradient(135deg, #15803d, #166534);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 17px rgba(22, 163, 74, 0.30);
+}
+
+.stock-form .add-stock-btn:active {
+    transform: scale(0.97);
+}
+
+.stock-form .add-stock-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =====================================
+   STOCK OUT - RECORD STOCK OUT BUTTON
+===================================== */
+
+.stock-form .record-stock-out-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: fit-content;
+    min-width: 190px;
+    padding: 14px 25px;
+
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.20);
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.stock-form .record-stock-out-btn:hover {
+    background: linear-gradient(135deg, #c2410c, #9a3412);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 17px rgba(234, 88, 12, 0.30);
+}
+
+/* CLICK EFFECT */
+.stock-form .record-stock-out-btn:active {
+    transform: scale(0.97);
+}
+
+/* FOCUS EFFECT */
+.stock-form .record-stock-out-btn:focus-visible {
+    outline: 3px solid #fdba74;
+    outline-offset: 3px;
+}
+
+/* DISABLED EFFECT */
+.stock-form .record-stock-out-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+    .stock-form .record-stock-out-btn {
+        width: 100%;
+        min-width: 100%;
+    }
+}
